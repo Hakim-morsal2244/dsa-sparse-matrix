@@ -1,46 +1,39 @@
 # Sparse Matrix - DSA HW01
 
 ## 📌 Overview
-
-This project implements a Sparse Matrix in Python as part of the Data Structures and Algorithms (DSA) coursework at ALU. Sparse matrices are matrices in which most elements are zero. To save space and improve efficiency, this project only stores and processes non-zero elements.
-
-The assignment includes:
-- Reading sparse matrix data from a file
-- Displaying the matrix in a sparse format
-- Adding two sparse matrices
-- Handling invalid input or mismatched matrix sizes
+This project implements a **Sparse Matrix** in Python for the **Data Structures and Algorithms (DSA)** course at ALU. A sparse matrix is one where most of the elements are zero. This implementation stores only **non-zero elements** to improve space and performance.
 
 ---
 
 ## 📁 Project Structure
 
 dsa-sparse-matrix/
-│
 ├── README.md
 ├── sample_inputs/
 │ ├── matrix1.txt
 │ └── matrix2.txt
-│
-├── code/
-│ └── src/
-│ ├── sparse_matrix.py
-│ └── test_sparse.py
+└── code/
+└── src/
+├── sparse_matrix.py
+└── test_sparse.py
 
+yaml
+Copy
+Edit
 
 ---
 
 ## 🧠 Features
 
-- Efficient representation using Python dictionaries
-- File-based input for easy testing
+- Efficient storage using Python dictionaries
+- File input with clear parsing
 - Matrix addition with dimension checks
-- Clear and readable output format
-- Graceful error handling
+- Formatted output for sparse data
+- Error handling for bad input or mismatched sizes
 
 ---
 
-## 🧪 Sample Input (`matrix1.txt`)
-
+## 🧪 Input Format Example (`matrix1.txt`)
 
 4 4
 0 1 5
@@ -48,12 +41,11 @@ dsa-sparse-matrix/
 2 3 -3
 3 0 6
 
+shell
+Copy
+Edit
 
 ## ✅ Expected Output
-
-
----
-
 
 Sparse Matrix 4x4
 (0, 1): 5
@@ -65,6 +57,7 @@ yaml
 Copy
 Edit
 
+---
 
 ## 🚀 How to Run
 
@@ -73,16 +66,53 @@ Edit
 ```bash
 git clone https://github.com/<your-username>/dsa-sparse-matrix.git
 cd dsa-sparse-matrix/code/src
+Make sure the file paths to matrix1.txt and matrix2.txt are correct.
 
+Run the test script:
 
-💡 Notes
-Make sure the sample_inputs folder is in the correct location (../sample_inputs) relative to the src folder.
+bash
+Copy
+Edit
+python3 test_sparse.py
+🧪 Sample Test Script (test_sparse.py)
+python
+Copy
+Edit
+from sparse_matrix import SparseMatrix
 
-Input files must follow the format: first line = matrix size (rows cols), followed by non-zero entries (row col value).
+# Adjust path if needed based on where you're running this from
+file1 = "../../sample_inputs/matrix1.txt"
+file2 = "../../sample_inputs/matrix2.txt"
 
-🧑‍💻 Author
-Morsal Hakim (@Hakim-morsal2244)
+matrix1 = SparseMatrix(file1)
+matrix2 = SparseMatrix(file2)
 
+print("Matrix 1:")
+matrix1.display()
+
+print("\nMatrix 2:")
+matrix2.display()
+
+result = matrix1.add(matrix2)
+
+print("\nResult of Addition:")
+result.display()
+👩‍💻 Author
+Morsal Hakim
+GitHub: @Hakim-morsal2244
 
 📜 License
-This project is for educational purposes only.
+For educational use only – ALU DSA Coursework
+
+yaml
+Copy
+Edit
+
+---
+
+Let me know if you want:
+- A sample `matrix2.txt`
+- A `.zip` of the full structure
+- Help with uploading to GitHub
+
+You're now ready to get **full 100 points**! 🎯
