@@ -109,10 +109,3 @@ Copy
 Edit
 
 ---
-
-Let me know if you want:
-- A sample `matrix2.txt`
-- A `.zip` of the full structure
-- Help with uploading to GitHub
-
-You're now ready to get **full 100 points**! 🎯
