@@ -9,29 +9,31 @@ class SparseMatrix:
         try:
             with open(file_path, 'r') as f:
                 lines = f.readlines()
-            for line in lines:
-                line = line.strip()
-                if not line:
-                    continue
-                if line.startswith("rows="):
-                    self.rows = int(line.split('=')[1])
-                elif line.startswith("cols="):
-                    self.cols = int(line.split('=')[1])
-                elif line.startswith("(") and line.endswith(")"):
-                    values = line[1:-1].split(',')
-                    if len(values) != 3:
-                        raise ValueError("Input file has wrong format")
-                    row, col, val = map(int, values)
+
+            # First line: matrix dimensions (e.g., 4 4)
+            dims = lines[0].strip().split()
+            if len(dims) != 2:
+                raise ValueError("Invalid matrix size line. Expected 'rows cols'.")
+
+            self.rows = int(dims[0])
+            self.cols = int(dims[1])
+
+            # Remaining lines: non-zero values in format "row col value"
+            for line in lines[1:]:
+                parts = line.strip().split()
+                if len(parts) != 3:
+                    continue  # Skip invalid lines
+                row, col, val = map(int, parts)
+                if val != 0:
                     self.data[(row, col)] = val
-                else:
-                    raise ValueError("Input file has wrong format")
+
         except Exception as e:
             raise ValueError("Input file has wrong format") from e
 
     def display(self):
-        print("Sparse Matrix {}x{}".format(self.rows, self.cols))
+        print(f"Sparse Matrix {self.rows}x{self.cols}")
         for key in sorted(self.data):
-            print("{}: {}".format(key, self.data[key]))
+            print(f"{key}: {self.data[key]}")
 
     def add(self, other):
         if self.rows != other.rows or self.cols != other.cols:
